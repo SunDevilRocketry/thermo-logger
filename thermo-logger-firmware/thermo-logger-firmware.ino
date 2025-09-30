@@ -19,8 +19,8 @@
 #define SCLK_PIN 13       /* SPI clock            */
 #define MISO_PIN 12       /* master-in slave-out  */
 #define SS_PIN 10         /* slave select         */
-#define LOGGING_RATE 100  /* logs per second (hz) */
-// #define DEBUG
+#define LOGGING_RATE 1  /* logs per second (hz) */
+//#define DEBUG
 
 /**********************************************************
  Global Variables
@@ -53,6 +53,10 @@ while ( !Serial )
   delay(1);
   }
 
+#ifdef DEBUG
+Serial.println("Connected!");
+#endif /* DEBUG */
+
 /* wait for TC to stabilize */
 delay(500);
 if (!tc.begin()) 
@@ -62,6 +66,10 @@ if (!tc.begin())
     delay(1);
     }
   }
+
+#ifdef DEBUG
+Serial.println("TC Initialized!");
+#endif /* DEBUG */
 
 } /* setup() */
 
